@@ -22,7 +22,7 @@ var giphy = {
     url: 'https://api.giphy.com/v1/gifs/trending',
     query: {
         api_key: 'YieBxXpguJxAh7vxZhqanwZAhAN0g2C8',
-        limit: 12
+        limit: 9
     }
 };
 
@@ -48,6 +48,7 @@ function update() {
             $.each( res.data, function (i, giphy) {
 
                 var giphyUrl = giphy.images.downsized_large.url;
+                var giphyTitle = giphy.title;
 
                 // Add to latest Giphys
                 latestGiphys.push(giphyUrl);
@@ -55,7 +56,7 @@ function update() {
                 // Add Giphy HTML
                 $('#giphys').prepend(
                     '<div class="col-sm-6 col-md-4 col-lg-3 p-1">' +
-                        '<img class="w-100 img-fluid" src="' + giphyUrl + '">' +
+                        '<img class="w-100 img-fluid" alt="' + giphyTitle + '" src="' + giphyUrl + '">' +
                     '</div>'
                 );
             });
